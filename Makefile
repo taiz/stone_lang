@@ -9,14 +9,14 @@ JAR = $(BIN)/jar
 ##########
 # variable
 #
-MAIN = chap3.LexerRunner
+MAIN = chap5.ParserRunner
 SOURCEDIR = src
 DISTDIR = bin
 LIBDIR = lib
 #
 # file (use in jarfile)
 #
-SOURCE = $(foreach dir, $(SOURCEDIR), $(wildcard $(dir)/stone/*.java $(dir)/stone/ast/*.java $(dir)/chap3/*.java))
+SOURCE = $(foreach dir, $(SOURCEDIR), $(wildcard $(dir)/stone/*.java $(dir)/stone/ast/*.java $(dir)/chap5/*.java))
 #CLASSPATH = $(DISTDIR):$(DISTDIR)/stone:$(DISTDIR)/stone/ast:$(DISTDIR)/chap3
 CLASSPATH = $(DISTDIR)
 CLASS = application/*class util/*class security/*class
