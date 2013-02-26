@@ -9,16 +9,17 @@ JAR = $(BIN)/jar
 ##########
 # variable
 #
-MAIN = chap5.ParserRunner
+MAIN = chap7.ClosureRunner
 SOURCEDIR = src
 DISTDIR = bin
 LIBDIR = lib
 #
 # file (use in jarfile)
 #
-SOURCE = $(foreach dir, $(SOURCEDIR), $(wildcard $(dir)/stone/*.java $(dir)/stone/ast/*.java $(dir)/chap5/*.java))
-#CLASSPATH = $(DISTDIR):$(DISTDIR)/stone:$(DISTDIR)/stone/ast:$(DISTDIR)/chap3
-CLASSPATH = $(DISTDIR)
+SOURCE = $(foreach dir, $(SOURCEDIR), $(wildcard $(dir)/stone/*.java $(dir)/stone/ast/*.java $(dir)/chap6/*.java) $(dir)/chap7/*.java)
+LIBS_ = $(foreach dir, $(LIBDIR), $(wildcard $(dir)/*.jar))
+LIBS = $(subst  " ", :, $(LIBS_))
+CLASSPATH = $(LIBS):$(DISTDIR)
 CLASS = application/*class util/*class security/*class
 
 ##########
@@ -36,8 +37,7 @@ $(MANIFEST):
 # compile
 #
 compile: clean
-	@echo $(SOURCEDIR)
-	$(JAVAC) -d $(DISTDIR) $(SOURCE)
+	$(JAVAC) -cp $(LIBS) -d $(DISTDIR) $(SOURCE)
 
 
 ##########
@@ -56,6 +56,7 @@ clean:
 
 
 all: clean compile
+	@echo $(LIBS)
 	$(JAVA) -cp $(CLASSPATH) $(MAIN)
 
 .SUFFIXES: .java .class
