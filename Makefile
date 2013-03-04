@@ -9,14 +9,14 @@ JAR = $(BIN)/jar
 ##########
 # variable
 #
-MAIN = chap7.ClosureRunner
+MAIN = chap9.ClassRunner
 SOURCEDIR = src
 DISTDIR = bin
 LIBDIR = lib
 #
 # file (use in jarfile)
 #
-SOURCE = $(foreach dir, $(SOURCEDIR), $(wildcard $(dir)/stone/*.java $(dir)/stone/ast/*.java $(dir)/chap6/*.java) $(dir)/chap7/*.java)
+SOURCE = $(foreach dir, $(SOURCEDIR), $(wildcard $(dir)/stone/*.java $(dir)/stone/ast/*.java $(dir)/chap6/*.java) $(dir)/chap7/*.java $(dir)/chap8/*.java $(dir)/chap9/*.java)
 LIBS_ = $(foreach dir, $(LIBDIR), $(wildcard $(dir)/*.jar))
 LIBS = $(subst  " ", :, $(LIBS_))
 CLASSPATH = $(LIBS):$(DISTDIR)
